@@ -1,8 +1,13 @@
 name: Release
 on:
   push:
+    branches:
+      - main
+      - master
 jobs:
   call-reusable-workflow:
     uses: intisy/workflows/.github/workflows/release.yml@main
     secrets:
       envPAT: ${{ secrets.PAT }}
+    with:
+      repository: ${{ github.repository }}
